@@ -1,0 +1,39 @@
+---
+title: "Day 4 - Exploring Data"
+author: "Michelle Lam"
+format: html
+editor: visual
+---
+
+```{r}
+#| warning: false
+#| echo: false
+
+# Echo command will still show the output just not the code
+
+library(tidyverse)
+library(palmerpenguins)
+library(GGally) # to install install.packages("GGally")
+library(skimr)
+```
+
+## Exploratory Data Viz
+
+Check out your data a bit:
+
+```{r}
+#| include: false
+
+# Tell me the column names 
+names(penguins)
+
+# What are the dimensions?
+dim(penguins)
+
+# Can you show me the first 6 lines?
+head(penguins)
+
+# Can you show me the last 6 lines?
+tail(penguins)
+
+```
