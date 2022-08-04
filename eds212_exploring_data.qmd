@@ -9,6 +9,7 @@ editor: visual
 #| warning: false
 #| echo: false
 
+# Warning command will take out the warning messages when rendered
 # Echo command will still show the output just not the code
 
 library(tidyverse)
@@ -37,3 +38,44 @@ head(penguins)
 tail(penguins)
 
 ```
+
+```{r}
+skimr::skim(penguins)
+
+# to define which package the command is coming from put in package name::
+```
+
+```{r}
+#| warning: false
+#| include: false
+GGally::ggpairs(penguins)
+```
+
+## Jitterplot
+
+Flipper length by species
+
+```{r}
+#| fig.cap = "my awesome figure caption"
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm)) + 
+  geom_jitter(width = 0.2, 
+              alpha = 0.5,
+              height = 0,
+              aes(color = species)) + 
+  geom_boxplot(fill = NA) + 
+  theme_light() +
+  scale_color_manual(values = c("darkorchid4", "cyan4", "goldenrod")) +
+  labs(x = "Penguin Species", 
+       y = "Flipper Length (mm)", 
+       title = "Palmer Archipelago Penguin Flippers")
+
+# Use alpha to change opacity, 0 = transparent
+```
+
+```{r}
+ggplot(data = penguins, aes(x = bill_length_mm)) + 
+  geom_histogram(aes(fill = species), color = "magenta") +
+  facet_wrap(~species, ncol= 1)
+```
+
+Use fill command when changing color of polygons, use color when changing color of lines and points
